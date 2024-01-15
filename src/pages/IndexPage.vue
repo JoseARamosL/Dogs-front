@@ -4,7 +4,26 @@
         :rows="dogs"
         :columns="columns"
         row-key="id"
+        @row-click="showDogForm"
     />
+
+    <q-dialog
+      v-model="showForm"
+      persistent
+      @hide="clearSelectedDog">
+      <q-card>
+        <q-card-section>
+          <q-input v-model="selectedDog.name" label="Nombre" />
+          <q-input v-model="selectedDog.description" label="Descripción" />
+          <q-input v-model="selectedDog.race_id" label="Raza ID" />
+          <q-input v-model="selectedDog.size_id" label="Tamaño ID" />
+        </q-card-section>
+
+        <q-card-actions align="right">
+          <q-btn label="Cerrar" color="primary" @click="closeForm" />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </div>
 </template>
 
@@ -19,6 +38,13 @@ export default {
         { name: 'race_id', label: 'Raza ID', align: 'center', field: 'race_id' },
         { name: 'size_ide', label: 'Tamaño ID', align: 'center', field: 'size_id'}
       ],
+      showForm: false,
+      selectedDog: {
+        name: '',
+        description: '',
+        race_id: '',
+        size_id: ''
+      }
     };
   },
   mounted() {
@@ -29,6 +55,8 @@ export default {
               const { created_at, updated_at, ...dogData } = dog;
               return dogData;
             });
+
+            console.log(this.dogs);
           } else {
             console.error('La respuesta de la API no es un array:', response.data);
           }
@@ -37,5 +65,22 @@ export default {
           console.error('Error al obtener la lista de perros:', error);
         });
   },
+  methods: {
+    showDogForm(event, selectedRow) {
+      this.selectedDog = { ...selectedRow };
+      this.showForm = true;
+    },
+    closeForm() {
+      this.showForm = false;
+    },
+    clearSelectedDog() {
+      this.selectedDog = {
+        name: '',
+        description: '',
+        race_id: '',
+        size_id: ''
+      };
+    }
+  }
 };
 </script>
