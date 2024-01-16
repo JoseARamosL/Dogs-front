@@ -24,7 +24,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 255, 0.3);
+  background: rgba(16, 98, 155, 0.84);
   display: flex;
   color: white;
 }
