@@ -12,10 +12,54 @@
         />
 
         <q-toolbar-title>
-          CRUD PERROS
+          <img class="logo" src="src/statics/images/europe_language_jobs_logo.jpeg" alt="logoEurope" height="50px" width="50px">
         </q-toolbar-title>
 
-        <div>Jose Antonio Ramos Lado</div>
+        <q-btn class="custom-button"
+          flat
+          dense
+          round
+          square
+          aria-label="Jobs"
+          label="Jobs"
+        />
+
+        <q-btn class="custom-button"
+               flat
+               dense
+               round
+               square
+               aria-label="Candidates"
+               label="Candidates"
+        />
+
+        <q-btn class="custom-button"
+               flat
+               dense
+               round
+               square
+               aria-label="For Employers"
+               label="For Employers"
+        />
+
+        <q-btn class="custom-button"
+               flat
+               dense
+               round
+               square
+               aria-label="Career Advice"
+               label="Career Advice"
+        />
+
+        <q-btn class="custom-button"
+               flat
+               dense
+               round
+               square
+               aria-label="Log in/Sign Up"
+               label="Log in/Sign Up"
+        />
+
       </q-toolbar>
     </q-header>
 
@@ -78,3 +122,19 @@ export default defineComponent({
   }
 })
 </script>
+
+<style scoped>
+.logo {
+  margin-top: 5px;
+}
+
+.q-header {
+  background-color: rgb(13, 56, 102);
+}
+
+.custom-button {
+  border-radius: 3px;
+  margin-right: 10px;
+  text-transform: none;
+}
+</style>

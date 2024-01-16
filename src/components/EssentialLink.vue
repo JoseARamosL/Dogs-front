@@ -1,8 +1,7 @@
 <template>
   <q-item
     clickable
-    tag="a"
-    target="_blank"
+    tag="div"
     :href="link"
   >
     <q-item-section
@@ -20,7 +19,8 @@
 </template>
 
 <script>
-import { defineComponent } from 'vue'
+import { defineComponent, toRefs } from 'vue';
+import { useRouter } from 'vue-router';
 
 export default defineComponent({
   name: 'EssentialLink',
@@ -44,6 +44,18 @@ export default defineComponent({
       type: String,
       default: ''
     }
-  }
+  },
+  setup(props) {
+    const { link } = toRefs(props);
+    const router = useRouter();
+
+    const navigateToLink = () => {
+      router.push(link.value);
+    };
+
+    return {
+      navigateToLink,
+    };
+  },
 })
 </script>
